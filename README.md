@@ -175,9 +175,10 @@ It is in development. Run `claktor interest` to register interest; add
 ### Usage data
 
 An installed copy records one anonymous event per command: command name, exit
-code, duration, version, platform, driver and a random install id. It sends
-them together, once twenty are waiting or a minute after the first.
-Arguments, paths, repository names and code stay on the machine.
+code, duration, version, platform, driver, the languages of the mapped
+repository and a random install id. It sends them together, once twenty are
+waiting or a minute after the first. Arguments, paths, repository names and
+code stay on the machine.
 
 ## Updates
 
