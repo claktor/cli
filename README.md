@@ -11,8 +11,8 @@ issues. The binary is licensed under the [PolyForm Shield License 1.0.0](LICENSE
 
 Tell your coding agent:
 
-> Install the Claktor CLI as https://github.com/claktor/cli says, run
-> `claktor guide`, and use Claktor on this repository.
+> Install Claktor with `curl -fsSL https://claktor.com/install | sh`, then run
+> `~/.claktor/bin/claktor guide` and follow it on this repository.
 
 Or install it yourself, on Linux or macOS, x86_64 or arm64:
 
@@ -176,9 +176,8 @@ It is in development. Run `claktor interest` to register interest; add
 
 An installed copy records one anonymous event per command: command name, exit
 code, duration, version, platform, driver and a random install id. It sends
-them together, once twenty are waiting or five minutes after the first.
-Arguments, paths, repository names and code stay on the machine. Turn it off
-with `claktor telemetry off` or by setting `DO_NOT_TRACK=1`.
+them together, once twenty are waiting or a minute after the first.
+Arguments, paths, repository names and code stay on the machine.
 
 ## Updates
 
@@ -193,3 +192,10 @@ minisign -Vm manifest.json -P RWTMeGrmjBuO+Zqs2P6TD4tncfAX5P81i3/1mfvRyf1tr3p8CC
 ```
 
 Public key: `RWTMeGrmjBuO+Zqs2P6TD4tncfAX5P81i3/1mfvRyf1tr3p8CCEu0I+q`
+
+## Usage data settings
+
+`claktor telemetry off` stops the usage events and deletes the ones still
+queued. `claktor telemetry on` resumes them and `claktor telemetry status`
+shows the setting. `DO_NOT_TRACK=1` in the environment does the same for the
+commands that run with it.
