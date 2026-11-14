@@ -72,27 +72,31 @@ The short list gives the order. The sections below define each step; follow them
 Map the repository before choosing where to search. Reuse its saved decisions
 on later runs; refresh the inventory and compile after the source layout changes.
 
-1. `claktor map` writes the tracked files, parsed manifests and generated-file
-   headers to `.claktor/` at the repository root, which git ignores, and seeds
-   `.claktor/decisions.json`.
-2. Complete `decisions.json`. Read test configuration, manifests and
+1. `claktor map` writes the tracked files, parsed manifests and source-header
+   evidence to `.claktor/` at the repository root, which git ignores, and seeds
+   `.claktor/decisions.json` from that evidence. `seeded` counts the entries.
+2. Review `decisions.json`. Read test configuration, manifests and
    generation scripts, and search `inventory.json` for generated, vendored and
    static files (`generated/`, `vendor/`, `public/`, minified bundles); confirm
    what writes or serves each one.
    - `tests`: test files and test helpers, as directories ending `/`
-     (`tests/`) or globs (`**/*.test.ts`).
+     (`tests/`) or globs (`**/*.test.ts`). The seed holds the test names and
+     test directories whose files import a test runner; add the suites and
+     helpers it lacks.
    - `exclude`: exact tracked paths, or directories ending `/`, of generated,
      vendored or fixture source, each with the concrete evidence as `reason`.
      Keep the seeded entries; drop one when the source contradicts it.
    - `projects`: each manifest listed under `unresolved` in `facts.json`,
-     mapped to its project root (`.` for the repository root).
+     mapped to its project root (`.` for the repository root). The seed maps
+     each to its own directory.
    - `exceptions`: a path the compiler flags, mapped to the source-backed
      explanation of why its evidence misleads or why its directory is excluded.
    Everything else stays production, including scripts and examples.
    `claktor map --help` shows a complete `decisions.json`. `exclude` entries are
    objects: `{"path": "vendor/", "reason": "copied by scripts/vendor.sh"}`.
 3. `claktor map compile` validates the decisions and prints the targets. Fix
-   what it reports and rerun until `error_count` is 0.
+   what it reports and rerun until `error_count` is 0. `notes` names each
+   test selector that selects nothing.
    `.claktor/memberships.json` lists the targets of every file.
 4. Record the repository's existing check for each production target (the
    command its CI or contributor documentation runs for that code) in
@@ -120,7 +124,7 @@ on later runs; refresh the inventory and compile after the source layout changes
    When the leads fall short of a worthwhile reduction, inspect the target
    directly or continue through the ordered directories. Use directory-sized queries.
    The first query can take minutes; later pages and `--family` reuse it.
-   Exit code 2 means some oversized code was skipped; the listing is still usable.
+   A `partial` status means some oversized code was skipped; the listing is still usable.
 
 ### The loop
 
