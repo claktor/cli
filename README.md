@@ -12,7 +12,8 @@ issues. The binary is licensed under the [PolyForm Shield License 1.0.0](LICENSE
 Tell your coding agent:
 
 > Install Claktor with `curl -fsSL https://claktor.com/install | sh`, then run
-> `~/.claktor/bin/claktor guide` and follow it on this repository.
+> `~/.claktor/bin/claktor guide` and follow it to make 10 refactors in this
+> repository.
 
 Or install it yourself, on Linux or macOS, x86_64 or arm64:
 
