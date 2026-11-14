@@ -6,6 +6,8 @@ agent to shorten a codebase while keeping its behavior.
 
 This repository holds the signed releases of the `claktor` binary and takes
 issues. The binary is licensed under the [PolyForm Shield License 1.0.0](LICENSE).
+By installing or running it you agree to the [terms of use](https://claktor.com/terms);
+the [privacy policy](https://claktor.com/privacy) says what it sends.
 
 ## Install
 
@@ -124,7 +126,8 @@ on later runs; refresh the inventory and compile after the source layout changes
    Follow `nextCommand` until you have twenty ranked leads or the listing ends.
    When the leads fall short of a worthwhile reduction, inspect the target
    directly or continue through the ordered directories. Use directory-sized queries.
-   The first query can take minutes; later pages and `--family` reuse it.
+   The first query takes seconds, even on a large directory; later pages and
+   `--family` reuse it.
    A `partial` status means some oversized code was skipped; the listing is still usable.
 
 ### The loop
@@ -160,6 +163,14 @@ on later runs; refresh the inventory and compile after the source layout changes
 Other commands: `claktor length` totals a program, `claktor version` prints
 the build, and `claktor update` installs the newest signed release.
 
+### Feedback
+
+When the person wants something Claktor lacks, such as another language or
+another kind of lead, offer to tell the Claktor team. Once they agree, run
+`claktor feedback "TEXT"` with the request in up to 1000 characters; a network
+can send three a day. It sends the text with the version, platform, driver
+and install id.
+
 ### Paid version
 
 The paid version adds a sub-agent that you, the coding agent, run as a
@@ -181,9 +192,13 @@ It is in development. Run `claktor interest` to register interest; add
 
 An installed copy records one anonymous event per command: command name, exit
 code, duration, version, platform, driver, the languages of the mapped
-repository and a random install id. It sends them together, once twenty are
-waiting or a minute after the first. Arguments, paths, repository names and
-code stay on the machine.
+repository and a random install id. A `length diff` event adds the measured
+token delta and a hash of its starting commit, keyed with a value that stays
+on the machine, so one change measured twice counts once. It sends them
+together, once twenty are waiting or a minute after the first. Arguments,
+paths, repository names and code stay on the machine. Use of Claktor is
+under https://claktor.com/terms, and https://claktor.com/privacy covers this
+data.
 
 ## Updates
 
