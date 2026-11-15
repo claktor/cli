@@ -193,12 +193,12 @@ It is in development. Run `claktor interest` to register interest; add
 An installed copy records one anonymous event per command: command name, exit
 code, duration, version, platform, driver, the languages of the mapped
 repository and a random install id. A `length diff` event adds the measured
-token delta and a hash of its starting commit, keyed with a value that stays
-on the machine, so one change measured twice counts once. It sends them
-together, once twenty are waiting or a minute after the first. Arguments,
-paths, repository names and code stay on the machine. Use of Claktor is
-under https://claktor.com/terms, and https://claktor.com/privacy covers this
-data.
+token delta and hashes of its starting commit, its branch name and the commits
+since that start, keyed with a value that stays on the machine, so each change
+counts once. It sends them together, once twenty are waiting or a minute after
+the first. Arguments, paths, repository names and code stay on the machine.
+Use of Claktor is under https://claktor.com/terms, and
+https://claktor.com/privacy covers this data.
 
 ## Updates
 
